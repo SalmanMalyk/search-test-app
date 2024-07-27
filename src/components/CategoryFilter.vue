@@ -7,7 +7,7 @@ const model = defineModel()
 const memoryOptions = ['Languages', 'Design', 'Build', 'Cloud']
 
 const clearCategory = () => {
-    model.value = null;
+  model.value = null
 }
 </script>
 
@@ -23,6 +23,7 @@ const clearCategory = () => {
       >
         <div
           :class="[
+            active,
             'cursor-pointer focus:outline-none gap-2',
             checked
               ? 'bg-indigo-600 text-white hover:bg-indigo-500'
@@ -33,7 +34,11 @@ const clearCategory = () => {
           <TagIcon class="w-4 h-4" />
           {{ option }}
 
-          <XMarkIcon class="w-4 h-4 hover:border hover:rounded-full" v-if="checked" @click.prevent="clearCategory" />
+          <XMarkIcon
+            class="w-4 h-4 hover:border hover:rounded-full"
+            v-if="checked"
+            @click.prevent="clearCategory"
+          />
         </div>
       </RadioGroupOption>
     </RadioGroup>

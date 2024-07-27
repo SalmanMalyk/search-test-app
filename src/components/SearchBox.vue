@@ -15,7 +15,7 @@ import axios from 'axios'
 import _ from 'lodash'
 
 import searchImage from '@/assets/search.png'
-import CategoryFilter from "@/components/CategoryFilter.vue"
+import CategoryFilter from '@/components/CategoryFilter.vue'
 
 const showSearchBox = defineModel()
 
@@ -37,7 +37,7 @@ const fetchItems = async () => {
   const params = Object.fromEntries(Object.entries(filters).filter(([_, value]) => value))
 
   isLoading.value = true
-  hasError.value = false;
+  hasError.value = false
 
   await axios
     .get('https://frontend-test-api.digitalcreative.cn', {
@@ -50,7 +50,7 @@ const fetchItems = async () => {
       items.value = data
     })
     .catch((error) => {
-      hasError.value = true;
+      hasError.value = true
       console.error(error)
     })
     .finally(() => (isLoading.value = false))
@@ -65,7 +65,7 @@ function onSelect(item) {
 watch(
   () => [query.value, category.value],
   _.debounce(() => {
-    query.value = category.value;
+    query.value = category.value
     fetchItems()
   }, 500)
 )
